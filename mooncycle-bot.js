@@ -11,14 +11,16 @@ const CHROME_PATH = process.env.CHROME_BIN || '/usr/bin/google-chrome';
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
       '--disable-accelerated-2d-canvas',
-      '--disable-gpu'
+      '--disable-gpu',
+      '--single-process',
+      '--no-zygote'
     ]
   });
 
   const page = await browser.newPage();
 
   // Navigate to Axiom Pro Pulse page
-  await page.goto('https://axiom.trade/pulse', { waitUntil: 'networkidle2' });
+  await page.goto('https://axiom.trade/pulse', { waitUntil: 'networkidle2', timeout: 60000 });
   console.log('MoonCycle Bot is monitoring Axiom Pro Pulse...');
 
   // Monitoring logic
