@@ -22,15 +22,17 @@ const CHROME_PATH = process.env.CHROME_BIN || '/usr/bin/google-chrome';
   const page = await browser.newPage();
 
   // Logging before navigation
-  console.log('Navigating to https://axiom.trade/pulse ...');
+  console.log('Navigating to https://example.com ...');
   try {
-    await page.goto('https://axiom.trade/pulse', { waitUntil: 'networkidle2', timeout: 60000 });
-    console.log('Navigation successful. MoonCycle Bot is monitoring Axiom Pro Pulse...');
+    await page.goto('https://example.com', { waitUntil: 'networkidle2', timeout: 60000 });
+    console.log('Navigation successful. Example.com loaded!');
   } catch (err) {
     console.error('Navigation failed:', err);
-    await browser.close();
-    process.exit(1);
+    // Do not exit, keep the service alive
   }
+
+  // Keep the process alive
+  setInterval(() => console.log('Bot is still running...'), 60000);
 
   // Monitoring logic
   await page.exposeFunction('onNewTokenDetected', async (tokenName) => {
