@@ -4,11 +4,10 @@
   "description": "Axiom Pro Pulse Auto-Buy Bot",
   "main": "mooncycle-bot.js",
   "scripts": {
-    "start": "node mooncycle-bot.js",
-    "postinstall": "node node_modules/puppeteer/install.js"
+    "start": "node mooncycle-bot.js"
   },
   "dependencies": {
-    "puppeteer": "^21.3.8"
+    "puppeteer-core": "^22.8.2"
   },
   "engines": {
     "node": ">=18.0.0"

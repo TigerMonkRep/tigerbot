@@ -1,16 +1,18 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
+
+const CHROME_PATH = process.env.CHROME_BIN || '/usr/bin/google-chrome';
 
 (async () => {
   const browser = await puppeteer.launch({
     headless: "new",
+    executablePath: CHROME_PATH,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
       '--disable-accelerated-2d-canvas',
       '--disable-gpu'
-    ],
-    executablePath: process.env.CHROME_BIN || null
+    ]
   });
 
   const page = await browser.newPage();
