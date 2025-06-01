@@ -7,7 +7,9 @@
     "start": "node mooncycle-bot.js"
   },
   "dependencies": {
-    "puppeteer-core": "^22.8.2"
+    "puppeteer-core": "^22.8.2",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.1"
   },
   "engines": {
     "node": ">=18.0.0"

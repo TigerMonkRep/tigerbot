@@ -1,4 +1,6 @@
-const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(StealthPlugin());
 
 const CHROME_PATH = process.env.CHROME_BIN || '/usr/bin/google-chrome';
 
@@ -19,9 +21,16 @@ const CHROME_PATH = process.env.CHROME_BIN || '/usr/bin/google-chrome';
 
   const page = await browser.newPage();
 
-  // Navigate to Axiom Pro Pulse page
-  await page.goto('https://axiom.trade/pulse', { waitUntil: 'networkidle2', timeout: 60000 });
-  console.log('MoonCycle Bot is monitoring Axiom Pro Pulse...');
+  // Logging before navigation
+  console.log('Navigating to https://axiom.trade/pulse ...');
+  try {
+    await page.goto('https://axiom.trade/pulse', { waitUntil: 'networkidle2', timeout: 60000 });
+    console.log('Navigation successful. MoonCycle Bot is monitoring Axiom Pro Pulse...');
+  } catch (err) {
+    console.error('Navigation failed:', err);
+    await browser.close();
+    process.exit(1);
+  }
 
   // Monitoring logic
   await page.exposeFunction('onNewTokenDetected', async (tokenName) => {
