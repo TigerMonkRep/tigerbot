@@ -1,9 +1,12 @@
-	
-name	"mooncycle-pulse-bot"
-version	"1.0.0"
-description	"Axiom Pro Pulse Auto-Buy Bot"
-main	"mooncycle-bot.js"
-scripts	
-start	"node mooncycle-bot.js"
-dependencies	
-puppeteer	"^19.0.0"
+{
+  "name": "mooncycle-pulse-bot",
+  "version": "1.0.0",
+  "description": "Axiom Pro Pulse Auto-Buy Bot",
+  "main": "mooncycle-bot.js",
+  "scripts": {
+    "start": "node mooncycle-bot.js"
+  },
+  "dependencies": {
+    "puppeteer": "^19.0.0"
+  }
+}
